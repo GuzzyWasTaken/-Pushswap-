@@ -1,5 +1,5 @@
 # Name
-NAME = pushswap.a
+NAME = push_swap
 FLAGS = -Wall -Wextra -Werror
 CC = gcc
 
