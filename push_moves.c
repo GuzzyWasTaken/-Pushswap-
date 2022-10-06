@@ -1,0 +1,132 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   push_moves.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/02/28 14:13:19 by auzochuk      #+#    #+#                 */
+/*   Updated: 2022/04/11 17:09:25 by auzochuk      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void	swapa(t_push *stack)
+{
+	t_stacks	tmp;
+
+	tmp = stack->bucket[0];
+	stack->bucket[0] = stack->bucket[1];
+	stack->bucket[1] = tmp;
+	write(1, "sa", 2);
+	write(1, "\n", 1);
+}
+
+void	swapb(t_push *stack)
+{
+	t_stacks	tmp;
+
+	tmp = stack->bucket[0];
+	stack->bucket[0] = stack->bucket[1];
+	stack->bucket[1] = tmp;
+	write(1, "sb", 2);
+	write(1, "\n", 1);
+}
+
+void	pushtoa(t_push *stack)
+{
+	int			i;
+
+	i = stack->alen + 1;
+	while (--i > 0)
+		stack->bucket[i] = stack->bucket[i - 1];
+	stack->bucket[0] = stack->bucketb[0];
+	i = -1;
+	while (++i < stack->blen)
+		stack->bucketb[i] = stack->bucketb[i + 1];
+	stack->blen = stack->blen - 1;
+	stack->alen = stack->alen + 1;
+	write(1, "pa", 2);
+	write(1, "\n", 1);
+}
+
+void	pushtob(t_push *stack)
+{
+	int			i;
+
+	i = stack->blen + 1;
+	while (--i > 0)
+		stack->bucketb[i] = stack->bucketb[i - 1];
+	stack->bucketb[0] = stack->bucket[0];
+	i = -1;
+	while (++i < stack->alen)
+		stack->bucket[i] = stack->bucket[i + 1];
+	stack->blen = stack->blen + 1;
+	stack->alen = stack->alen - 1;
+	write(1, "pb", 2);
+	write(1, "\n", 1);
+}
+
+
+void	swaptopa(t_push *stack)
+{
+	t_stacks	tmp;
+
+	tmp = stack->bucket[0];
+	stack->bucket[0] = stack->bucket[stack->alen];
+	stack->bucket[stack->alen] = tmp;
+
+}
+
+void	swaptopb(t_push *stack)
+{
+	t_stacks	tmp;
+
+	tmp = stack->bucketb[0];
+	stack->bucketb[0] = stack->bucketb[stack->blen];
+	stack->bucketb[stack->blen] = tmp;
+}
+
+void	rotatea(t_push *stack)
+{
+	t_stacks	tmp;
+	int			i;
+
+	i = -1;
+	tmp = stack->bucket[0];
+	while (++i < stack->alen)
+		stack->bucket[i] = stack->bucket[i + 1];
+	stack->bucket[stack->alen - 1] = tmp;
+	write(1, "ra", 2);
+	write(1, "\n", 1);
+}
+
+
+void	rotateb(t_push *stack)
+{
+	t_stacks	tmp;
+	int			i;
+
+	i = -1;
+	tmp = stack->bucketb[0];
+	while (++i < stack->blen)
+		stack->bucket[i] = stack->bucket[i + 1];
+	stack->bucket[i] = tmp;
+	write(1, "rb", 2);
+	write(1, "\n", 1);
+}
+
+void	reverse_rotate_a(t_push *stack)
+{
+	t_stacks	tmp;
+	int			i;
+
+	i = stack->alen;
+	tmp = stack->bucket[stack->alen - 1];
+	while (--i > 0)
+		stack->bucket[i] = stack->bucket[i - 1];
+	stack->bucket[0] = tmp;
+	write(1, "rra", 2);
+	write(1, "\n", 1);
+}
