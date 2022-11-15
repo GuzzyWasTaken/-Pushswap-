@@ -117,8 +117,6 @@ void	radix(t_push *stack)
 			i++;
 		}
 		while (stack->blen > 0)
-		{
 			pushtoa (stack);
-		}
 	}
 }
