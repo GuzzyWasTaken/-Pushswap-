@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/28 14:13:15 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/11/15 18:08:58 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/11/15 19:58:59 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 void	hardcode(int argc, t_push *stack)
 {
+	// printf("in hc\n");
 	if (argc == 3)
 		hc_two(stack);
 	if (argc == 4)
 		hc_three(stack);
-	if (argc > 4)
+	if (argc > 6)
 		hc_five(stack);
 }
 
@@ -33,10 +34,17 @@ void	hc_three(t_push	*stack)
 {
 	if (stack->bucket[0].stack > stack->bucket[1].stack
 		&& stack->bucket[1].stack > stack->bucket[2].stack)
+	{
+		rotatea(stack);
 		swapa(stack);
+	}
 	if (stack->bucket[1].stack > stack->bucket[2].stack
 		&& stack->bucket[2].stack > stack->bucket[0].stack)
-		reverse_rotate_a(stack);
+	{
+		pushtob(stack);
+		hc_two(stack);
+		pushtoa(stack);
+	}
 	else if (stack->bucket[2].stack > stack->bucket[0].stack
 		&& stack->bucket[0].stack > stack->bucket[1].stack)
 		swapa(stack);

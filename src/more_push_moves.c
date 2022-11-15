@@ -48,6 +48,6 @@ void	reverse_rotate_a(t_push *stack)
 	while (--i > 0)
 		stack->bucket[i] = stack->bucket[i - 1];
 	stack->bucket[0] = tmp;
-	write(1, "rra", 2);
+	write(1, "rra", 3);
 	write(1, "\n", 1);
 }
