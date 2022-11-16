@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/28 14:13:26 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/04/11 16:59:49 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/11/16 18:14:36 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 
 typedef struct s_stacks
 {
-	int	stack;
+	int	num;
 	int	old_pos;
 	int	original;
 }	t_stacks;
 
 typedef struct s_push
 {
-	t_stacks	*bucket;
-	t_stacks	*bucketb;
+	t_stacks	*a;
+	t_stacks	*b;
 	int			alen;
 	int			blen;
 	int			maxnum;

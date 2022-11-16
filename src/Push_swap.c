@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/28 14:13:22 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/11/15 18:18:53 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/11/16 18:14:02 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	get_max_bit(t_push	*stack)
 	i = 0;
 	while (i < stack->alen)
 	{
-		if (stack->bucket[i].stack > stack->maxnum)
-			stack->maxnum = stack->bucket[i].stack;
+		if (stack->a[i].num > stack->maxnum)
+			stack->maxnum = stack->a[i].num;
 		i++;
 	}
 	while (stack->maxnum >> stack->maxbits != 0)
@@ -34,22 +34,22 @@ void	buble_two(t_push *stack)
 {	
 	int			i;
 	t_stacks	tmp;
-	int			swamp;
+	int			j;
 
 	i = -1;
-	swamp = 1;
-	while (swamp)
+	j = 1;
+	while (j)
 	{
 		i = -1;
-		swamp = 0;
+		j = 0;
 		while (++i < stack->alen - 1)
 		{
-			if (stack->bucket[i].old_pos > stack->bucket[i + 1].old_pos)
+			if (stack->a[i].old_pos > stack->a[i + 1].old_pos)
 			{
-				tmp = stack->bucket[i + 1];
-				stack->bucket[i + 1] = stack->bucket[i];
-				stack->bucket[i] = tmp;
-				swamp++;
+				tmp = stack->a[i + 1];
+				stack->a[i + 1] = stack->a[i];
+				stack->a[i] = tmp;
+				j++;
 			}
 		}
 	}
@@ -59,29 +59,29 @@ void	buble_two(t_push *stack)
 void	bub(t_push *stack)
 {
 	int			i;
-	int			swamp;
+	int			j;
 	t_stacks	tmp;
 
-	swamp = 1;
+	j = 1;
 	i = -1;
-	while (swamp != 0)
+	while (j != 0)
 	{
 		i = -1;
-		swamp = 0;
+		j = 0;
 		while (++i < stack->alen - 1)
 		{
-			if (stack->bucket[i].stack > stack->bucket[i + 1].stack)
+			if (stack->a[i].num > stack->a[i + 1].num)
 			{
-				tmp = stack->bucket[i + 1];
-				stack->bucket[i + 1] = stack->bucket[i];
-				stack->bucket[i] = tmp;
-				swamp++;
+				tmp = stack->a[i + 1];
+				stack->a[i + 1] = stack->a[i];
+				stack->a[i] = tmp;
+				j++;
 			}
 		}
 	}
 	i++;
 	while (--i >= 0)
-		stack->bucket[i].stack = i;
+		stack->a[i].num = i;
 }
 
 size_t	ft_strlen(const char *s)
@@ -108,7 +108,7 @@ void	radix(t_push *stack)
 		i = 0;
 		while (i < stack->alen)
 		{
-			if (((stack->bucket[0].stack >> x) & 1) == 0)
+			if (((stack->a[0].num >> x) & 1) == 0)
 			{
 				pushtob(stack);
 				i--;

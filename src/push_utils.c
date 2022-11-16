@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/21 15:19:10 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/11/15 19:52:19 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/11/16 18:29:15 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ void	fillstack(t_push *stack, int argc, char **argv)
 	int	i;
 
 	i = 0;
-	stack->bucket = ft_calloc((argc + 1), sizeof(t_stacks));
-	stack->bucketb = ft_calloc((argc + 1), sizeof(t_stacks));
+	stack->a = ft_calloc((argc + 1), sizeof(t_stacks));
+	stack->b = ft_calloc((argc + 1), sizeof(t_stacks));
 	while (++i < argc)
 	{	
-		stack->bucket[i - 1].stack = ft_atoi(argv[i]);
-		stack->bucket[i - 1].old_pos = i - 1;
-		stack->bucket[i - 1].original = stack->bucket[i - 1].stack;
+		stack->a[i - 1].num = ft_atoi(argv[i]);
+		stack->a[i - 1].old_pos = i - 1;
+		stack->a[i - 1].original = stack->a[i - 1].num;
 	}
 	stack->alen = i - 1;
 	stack->blen = 0;
@@ -89,7 +89,27 @@ int	double_check(t_push stack)
 
 	i = -1;
 	while (++i < stack.alen - 1)
-		if (stack.bucket[i].original == stack.bucket[i + 1].original)
+		if (stack.a[i].original == stack.a[i + 1].original)
 			return (1);
 	return (0);
+}
+
+int	smallest(t_push *stack)
+{
+	int i;
+	int	j;
+	int	lock;
+
+	i = 0;
+	j = 1;
+	lock = 1;
+	while(stack->a[i].num)
+	{
+		if (stack->a[i].num > stack->a[j].num)
+		{
+			i = j;
+			lock = 1;
+		}
+		j++;
+	}
 }
