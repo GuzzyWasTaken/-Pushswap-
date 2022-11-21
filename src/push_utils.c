@@ -97,19 +97,15 @@ int	double_check(t_push stack)
 int	smallest(t_push *stack)
 {
 	int i;
-	int	j;
-	int	lock;
+	int	min;
 
 	i = 0;
-	j = 1;
-	lock = 1;
+	min = stack->a[0].num;
 	while(stack->a[i].num)
 	{
-		if (stack->a[i].num > stack->a[j].num)
-		{
-			i = j;
-			lock = 1;
-		}
-		j++;
+		if (min > stack->a[i].num)
+			min = stack->a[i].num;
+		i++;
 	}
+	return(min);
 }

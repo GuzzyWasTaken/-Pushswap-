@@ -4,9 +4,7 @@
 int	main(int	argc ,char **argv)
 {
 	t_push	stack;
-	int		i;
 
-	i = -1;
 	setbuf(stdout, NULL);
 	if (argc < 2)
 		return (0);

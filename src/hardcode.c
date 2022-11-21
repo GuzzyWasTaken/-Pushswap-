@@ -59,16 +59,15 @@ void	hc_three(t_push	*stack)
 		swapa(stack);
 }
 
-void hc_four(t_push *stack)
-{
-	while(i )
-	if (stack->a[0].num > stack->a[1].num)
-}
+// void hc_four(t_push *stack)
+// {
+// 	while(i )
+// 	if (stack->a[0].num > stack->a[1].num)
+// }
 
 void	hc_five(t_push *stack)
 {
-	while(stack->alen > 3)
-		pushtob(stack);
+	
 	
 }
 
