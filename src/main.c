@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/23 21:40:57 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/11/24 02:31:57 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/11/24 20:29:04 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@ int	main(int argc, char **argv)
 	{
 		argc = parse(argv, argc, &stack);
 		if (argc == -1)
-			return (EXIT_FAILURE);
+			exit (EXIT_FAILURE);
 	}
 	else
 		fillstack(&stack, argc, argv);
+	argc = argc -1;
 	bub(&stack);
 	if (double_check (stack) == 1)
 	{
-		write (1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		exit (1);
 	}
 	buble_two (&stack);
@@ -38,6 +39,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	radix(&stack);
+	exit (0);
 }
 
 int	smallest(t_push *stack)

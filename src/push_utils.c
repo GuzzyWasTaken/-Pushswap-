@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/21 15:19:10 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/11/24 02:34:26 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/11/24 16:41:11 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_atoi(const char	*s)
 		num = (num * 10) + (*s - '0');
 		s++;
 	}
-	min_max(num, i); 
+	min_max (num, i);
 	return ((int)num * i);
 }
 
@@ -71,10 +71,10 @@ void	fillstack(t_push *stack, int argc, char **argv)
 	i = 0;
 	stack->a = ft_calloc((argc + 1), sizeof(t_stacks));
 	if (!stack->a)
-		return ;
+		exit (1);
 	stack->b = ft_calloc((argc + 1), sizeof(t_stacks));
 	if (!stack->b)
-		return ;
+		exit (1);
 	while (++i < argc)
 	{	
 		stack->a[i - 1].num = ft_atoi(argv[i]);
