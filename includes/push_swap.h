@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/28 14:13:26 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/11/16 18:14:36 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/11/24 02:41:56 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,14 @@ void	bub(t_push *stack);
 void	buble_two(t_push *stack);
 int		double_check(t_push stack);
 void	hardcode(int argc, t_push *stack);
-void 	hc_two(t_push	*stack);
-void 	hc_three(t_push	*stack);
+void	hc_two(t_push	*stack);
+void	hc_three(t_push	*stack);
+void	hc_four(t_push *stack);
 void	hc_five(t_push	*stack);
 void	reverse_rotate_a(t_push *stack);
+int		smallest(t_push *stack);
+int		parse(char	**argv, int argc, t_push *stack);
+char	**ft_split(char const *s, char c);
+void	init(t_push *stack, int argc, char **numbers);
 
 #endif

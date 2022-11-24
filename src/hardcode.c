@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/28 14:13:15 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/11/16 18:14:02 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/11/24 01:58:59 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 void	hardcode(int argc, t_push *stack)
 {
-	printf("in hc\n");
 	if (argc == 3)
 		hc_two(stack);
 	if (argc == 4)
 		hc_three(stack);
+	if (argc == 5)
+		hc_four(stack);
 	if (argc == 6)
 		hc_five(stack);
 }
-
 
 void	hc_two(t_push	*stack)
 {
@@ -59,15 +59,52 @@ void	hc_three(t_push	*stack)
 		swapa(stack);
 }
 
-// void hc_four(t_push *stack)
-// {
-// 	while(i )
-// 	if (stack->a[0].num > stack->a[1].num)
-// }
+void	hc_four(t_push *stack)
+{
+	int	min_pos;
+
+	min_pos = smallest(stack);
+	if (min_pos == 1)
+		swapa(stack);
+	if (min_pos == 2)
+	{
+		rotatea(stack);
+		rotatea(stack);
+	}
+	if (min_pos == 3)
+		reverse_rotate_a(stack);
+	pushtob(stack);
+	hc_three(stack);
+	pushtoa(stack);
+}
 
 void	hc_five(t_push *stack)
 {
-	
-	
-}
+	int	min_pos;
+	int	i;
 
+	i = 0;
+	min_pos = smallest(stack);
+	if (min_pos == 1)
+	{
+	
+		swapa(stack);
+	}
+	if (min_pos == 2)
+	{
+		rotatea(stack);
+		rotatea(stack);
+	}
+	if (min_pos == 3)
+	{
+		reverse_rotate_a(stack);
+		reverse_rotate_a(stack);
+	}
+	if (min_pos == 4)
+		reverse_rotate_a(stack);
+	pushtob(stack);
+	hc_four(stack);
+	pushtoa(stack);
+	if (stack->a[0].num > stack->a[1].num)
+		swapa(stack);
+}

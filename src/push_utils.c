@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/21 15:19:10 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/11/16 18:29:15 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/11/24 02:34:26 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	min_max(unsigned long num, int sign)
 		return (-2147483648);
 	if (num > 2147483647)
 	{
-		write (1, "Error\n" ,6);
+		write (1, "Error\n", 6);
 		exit (1);
 	}
 	return (0);
@@ -46,7 +46,7 @@ int	ft_atoi(const char	*s)
 		num = (num * 10) + (*s - '0');
 		s++;
 	}
-	min_max(num, i);
+	min_max(num, i); 
 	return ((int)num * i);
 }
 
@@ -70,7 +70,11 @@ void	fillstack(t_push *stack, int argc, char **argv)
 
 	i = 0;
 	stack->a = ft_calloc((argc + 1), sizeof(t_stacks));
+	if (!stack->a)
+		return ;
 	stack->b = ft_calloc((argc + 1), sizeof(t_stacks));
+	if (!stack->b)
+		return ;
 	while (++i < argc)
 	{	
 		stack->a[i - 1].num = ft_atoi(argv[i]);
@@ -92,20 +96,4 @@ int	double_check(t_push stack)
 		if (stack.a[i].original == stack.a[i + 1].original)
 			return (1);
 	return (0);
-}
-
-int	smallest(t_push *stack)
-{
-	int i;
-	int	min;
-
-	i = 0;
-	min = stack->a[0].num;
-	while(stack->a[i].num)
-	{
-		if (min > stack->a[i].num)
-			min = stack->a[i].num;
-		i++;
-	}
-	return(min);
 }

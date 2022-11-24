@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/28 14:13:22 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/11/16 18:14:02 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/11/24 02:18:06 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	radix(t_push *stack)
 	int	x;
 
 	i = 0;
-	x = 0;
+	x = -1;
 	while (++x < stack->maxbits)
 	{
 		i = 0;
@@ -113,12 +113,11 @@ void	radix(t_push *stack)
 				pushtob(stack);
 				i--;
 			}
-			rotatea(stack);
+			else
+				rotatea(stack);
 			i++;
 		}
 		while (stack->blen > 0)
-		{
 			pushtoa (stack);
-		}
 	}
 }
