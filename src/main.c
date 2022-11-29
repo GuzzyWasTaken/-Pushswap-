@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/23 21:40:57 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/11/24 21:22:03 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/11/29 19:36:04 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,7 @@ int	main(int argc, char **argv)
 	t_push	stack;
 
 	if (argc <= 2)
-	{
 		argc = parse(argv, argc, &stack);
-		if (argc == -1)
-			exit (EXIT_FAILURE);
-	}
 	else
 	{
 		fillstack(&stack, argc, argv);

@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/28 14:13:26 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/11/24 21:28:15 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/11/29 18:32:00 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ int		parse(char	**argv, int argc, t_push *stack);
 char	**ft_split(char const *s, char c);
 void	init(t_push *stack, int argc, char **numbers);
 int		is_sorted(t_push *stack);
+void	ps_error(char *error_message);
 
 #endif
