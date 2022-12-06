@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/21 15:19:10 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/11/24 16:41:11 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/12/06 15:19:56 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	fillstack(t_push *stack, int argc, char **argv)
 	if (!stack->b)
 		exit (1);
 	while (++i < argc)
-	{	
+	{
+		printf("in while\n");
 		stack->a[i - 1].num = ft_atoi(argv[i]);
 		stack->a[i - 1].old_pos = i - 1;
 		stack->a[i - 1].original = stack->a[i - 1].num;

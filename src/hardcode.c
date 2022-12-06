@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/28 14:13:15 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/11/24 21:28:36 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/12/05 10:35:19 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 void	hardcode(int argc, t_push *stack)
 {
+	if (is_sorted(stack) == 0)
+		exit (0);
 	if (argc == 2)
 		hc_two(stack);
 	if (argc == 3)
@@ -63,11 +65,6 @@ void	hc_four(t_push *stack)
 {
 	int	min_pos;
 
-	if (stack->blen == 0)
-	{
-		if (is_sorted(stack) == 0)
-			exit (0);
-	}
 	min_pos = smallest(stack);
 	if (min_pos == 1)
 		swapa(stack);
@@ -87,8 +84,6 @@ void	hc_five(t_push *stack)
 {
 	int	min_pos;
 
-	if (is_sorted(stack) == 0)
-		exit (0);
 	min_pos = smallest(stack);
 	if (min_pos == 1)
 		swapa(stack);

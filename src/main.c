@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/23 21:40:57 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/11/29 19:36:04 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/12/06 15:26:37 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,26 @@ int	main(int argc, char **argv)
 {
 	t_push	stack;
 
+	if (argc == 1)
+		exit (0);
 	if (argc <= 2)
 		argc = parse(argv, argc, &stack);
 	else
 	{
-		fillstack(&stack, argc, argv);
+		parse_strings(argc, argv, &stack);
 		argc = argc -1;
 	}
 	bub(&stack);
 	if (double_check (stack) == 1)
-	{
-		write(2, "Error\n", 6);
-		exit (1);
-	}
+		ps_error("Error");
 	buble_two (&stack);
 	if (argc <= 5)
 	{
 		hardcode(argc, &stack);
-		return (0);
+		exit (0);
 	}
+	if (is_sorted(&stack) == 0)
+		exit (0);
 	radix(&stack);
 	exit (0);
 }

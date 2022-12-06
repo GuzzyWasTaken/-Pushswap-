@@ -6,7 +6,7 @@
 /*   By: auzochuk <auzochuk@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/28 14:13:26 by auzochuk      #+#    #+#                 */
-/*   Updated: 2022/11/29 18:32:00 by auzochuk      ########   odam.nl         */
+/*   Updated: 2022/12/06 13:46:51 by auzochuk      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
+# include <stdio.h>
 
 typedef struct s_stacks
 {
@@ -30,6 +32,7 @@ typedef struct s_push
 	int			alen;
 	int			blen;
 	int			maxnum;
+	char		**numbers;
 	int			maxbits;
 }	t_push;
 
@@ -62,5 +65,7 @@ char	**ft_split(char const *s, char c);
 void	init(t_push *stack, int argc, char **numbers);
 int		is_sorted(t_push *stack);
 void	ps_error(char *error_message);
+int		parse_strings(int argc, char **argv, t_push *stack);
+bool	ft_isdigit(char a);
 
 #endif
